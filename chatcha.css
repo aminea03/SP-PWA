@@ -1,0 +1,447 @@
+@font-face {
+	font-family: "AIR_Rebellion";
+	src: url("fonts/AIR_Rebellion.eot");
+	src: url("fonts/AIR_Rebellion.eot") format("embedded-opentype"), url("fonts/AIR_Rebellion.woff2") format("woff2"), url("fonts/AIR_Rebellion.woff") format("woff"),
+		url("fonts/AIR_Rebellion.ttf") format("truetype"), url("fonts/AIR_Rebellion.svg#AIR_Rebellion") format("svg");
+}
+
+@font-face {
+	font-family: "TurretRoadRegular";
+	src: url("fonts/TurretRoadRegular.eot");
+	src: url("fonts/TurretRoadRegular.eot") format("embedded-opentype"), url("fonts/TurretRoadRegular.woff2") format("woff2"), url("fonts/TurretRoadRegular.woff") format("woff"),
+		url("fonts/TurretRoadRegular.ttf") format("truetype"), url("fonts/TurretRoadRegular.svg#TurretRoadRegular") format("svg");
+}
+
+body {
+	min-height: 100vh;
+	background-color: #121212;
+	color: rgb(0, 179, 175);
+	font-family: "TurretRoadRegular";
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+input {
+	color: #b3b3b3;
+	text-align: center;
+}
+
+.hide_connexion {
+	display: none;
+}
+
+.index_top {
+	margin: 2.5vh 0 7.5vh 0;
+}
+
+.index_top img {
+	height: 386px;
+	transition: 2s;
+}
+
+.index_bottom {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.index_bottom_form_wrapper {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-around;
+	width: 600px;
+}
+
+.index_bottom form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.index_bottom_div1 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+.index_bottom_div2 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.index_bottom label,
+.index_bottom input {
+	height: 45px;
+	margin: 15px 0;
+	display: flex;
+	align-items: center;
+}
+
+.index_bottom input {
+	width: 300px;
+	box-sizing: border-box;
+	border: thin solid rgb(0, 179, 175);
+	border-radius: 10px;
+	background-color: #282828;
+}
+
+.index_bottom button {
+	background-color: transparent;
+	border: none;
+	border-radius: 50%;
+	align-self: center;
+	cursor: pointer;
+}
+
+.index_link {
+	font-size: 16px;
+	color: rgb(0, 179, 175);
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.index_bottom h2 {
+	font-size: 12pt;
+	font-family: "AIR_Rebellion";
+	margin-bottom: 30px;
+}
+
+.create_account {
+	margin: 35px 0;
+	display: none;
+}
+
+.show_create_account {
+	display: flex;
+}
+
+.create_account input[type="radio"] {
+	display: none;
+}
+
+.create_account p {
+	text-align: center;
+}
+
+.cat_type label {
+	width: 120px;
+	height: 120px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	cursor: pointer;
+}
+
+.cat_type_checked {
+	animation: cat_type_checked 0.5s forwards;
+	border-radius: 50%;
+}
+
+@keyframes cat_type_checked {
+	form {
+		transform: rotate(0);
+	}
+	to {
+		outline: thick solid rgb(0, 179, 175);
+		transform: rotate(360deg);
+	}
+}
+
+.cat_type label img:hover {
+	transform: scale(120%);
+	transition: 0.5s;
+	border-radius: 50%;
+}
+
+.cat_type {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.cat_info {
+	width: 75%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.cat_info label {
+	display: flex;
+	flex-direction: column;
+	height: min-content;
+}
+
+#create_form {
+	display: flex;
+	flex-direction: column;
+}
+
+.link_connection {
+	text-decoration: underline;
+	cursor: pointer;
+	margin-top: 30px;
+}
+
+img[src="images/catfoot_button.png"] {
+	transition: 0.5s;
+}
+img[src="images/catfoot_button.png"]:hover {
+	transform: rotate(360deg);
+}
+
+/* MEOW ROOM */
+
+.meowroom {
+	background-image: url("images/catground.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: right top;
+	height: 100vh;
+}
+
+.meow_header {
+	min-height: 100px;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.meow_header .logo {
+	height: 90px;
+	margin-left: 5vw;
+	padding: 15px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+
+	background-color: #121212;
+}
+
+.header_right {
+	width: 200px;
+	height: 75px;
+	border: thin solid #5f5f5f;
+	background-color: #191919;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin-right: 5vw;
+}
+
+.header_right a {
+	display: flex;
+}
+
+.header_right img {
+	cursor: pointer;
+}
+
+main {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
+.center_wrapper {
+	width: 90vw;
+	height: 80vh;
+	margin: 20px 5vw;
+	border-radius: 10px;
+	display: flex;
+}
+
+.online_wrapper {
+	width: 24%;
+	min-width: 200px;
+	height: 100%;
+	background-color: #282828;
+	border-radius: 10px 0 0 10px;
+	border: thin solid #5f5f5f;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+
+.online_wrapper_title {
+	font-size: 16pt;
+}
+
+.online {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-height: min-content;
+	overflow: scroll;
+	font-family: "AIR_Rebellion";
+	text-transform: uppercase;
+	max-width: 100%;
+}
+
+#online {
+	flex: 1;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	border-radius: 10px 0 0 10px;
+	border: thin solid #5f5f5f;
+	display: flex;
+}
+
+.online_line {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	height: 30px;
+	margin: 10px 0;
+	cursor: pointer;
+}
+
+.online_line img {
+	height: 40px;
+	width: 40px;
+	margin-right: 10px;
+	pointer-events: none;
+}
+
+.online_line p {
+	font-size: 10pt;
+	line-height: 30px;
+	pointer-events: none;
+}
+
+.chat_wrapper {
+	width: 76%;
+	min-width: 700px;
+	height: 100%;
+	background-color: #191919;
+	border-radius: 0 10px 10px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	border: thin solid #5f5f5f;
+	border-left: none;
+	box-sizing: border-box;
+	overflow-x: hidden;
+}
+
+.chat {
+	height: calc(100% - 80px);
+	width: 105%;
+	padding: 10px;
+	box-sizing: border-box;
+	color: #b3b3b3;
+	align-self: flex-start;
+}
+
+.typing_wrapper {
+	height: 60px;
+	background-color: #282828;
+	width: 95%;
+	margin: 10px;
+	border-radius: 50px;
+	border: thin solid #5f5f5f;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.typing_wrapper form {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.typing_wrapper textarea {
+	width: 95%;
+	font-size: 10pt;
+	background-color: transparent;
+	border: none;
+	resize: none;
+	color: #b3b3b3;
+	outline: none;
+}
+
+.typing_wrapper img {
+	height: 50px;
+	width: 50px;
+	cursor: pointer;
+}
+
+.typing_wrapper button {
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+}
+
+#chatframe {
+	width: 100%;
+	height: 100%;
+}
+
+.chat_content {
+	width: 100%;
+	background-color: #191919;
+}
+
+.chat_content p {
+	color: #b3b3b3;
+	margin: 5px 5px;
+}
+
+.chat_content .chatp1 {
+	color: rgb(0, 179, 175);
+	text-transform: capitalize;
+}
+
+.chat_content .chatp2 {
+	color: rgb(0, 179, 175);
+	text-transform: capitalize;
+	font-size: 8pt;
+	min-width: 110px;
+}
+
+.chatpwrapper {
+	display: flex;
+	align-items: baseline;
+}
+
+.chat_background_color {
+	background-color: #191919;
+}
+
+.colorgrey_chat {
+	background-color: #191919;
+}
+
+.colorgrey_online {
+	background-color: #282828;
+	display: flex;
+	align-items: flex-start;
+	padding-left: 15px;
+}
+
+.details {
+	padding-left: 15px;
+	display: none;
+}
+
+.details p {
+	font-size: 10pt;
+	font-family: "TurretRoadRegular";
+	padding: 5px 0;
+	margin: 0;
+}

@@ -1,0 +1,20 @@
+{
+	"name": "Chatcha",
+	"icons": [
+		{
+			"src": "images/icon512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		},
+		{
+			"src": "images/icon192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		}
+	],
+	"start_url": "/index.php",
+	"display": "standalone",
+	"background_color": "#00B3AF",
+	"theme_color": "#00B3AF",
+	"orientation": "portrait-primary"
+}
