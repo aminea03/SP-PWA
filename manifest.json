@@ -9,7 +9,8 @@
 		{
 			"src": "images/icon192.png",
 			"type": "image/png",
-			"sizes": "192x192"
+			"sizes": "192x192",
+			"purpose": "any maskable"
 		}
 	],
 	"start_url": "/index.php",
