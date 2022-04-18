@@ -77,10 +77,9 @@ if (isset($_POST["login_creation"]) && isset($_POST["password_creation"]) && iss
                 </div>
                 <div class="index_bottom_div2">
                     <form action="" method="POST" id="login_form">
-                        <input type="text" id="login" name="login">
-                        <input type="password" id="password" name="password">
+                        <input type="text" id="login" name="login" placeholder="Login">
+                        <input type="password" id="password" name="password" placeholder="Password">
                     </form>
-
                 </div>
                 <button type="submit" form="login_form"><img src="images/catfoot_button.png" alt="patte de chat"></button>
             </div>
