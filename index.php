@@ -58,8 +58,8 @@ if (isset($_POST["login_creation"]) && isset($_POST["password_creation"]) && iss
     <script src="sw.js"></script>
     <link rel="icon" href="images/icon192.png">
     <link rel="apple-touch-icon" href="/images/icon192.png">
-    <meta name="apple-mobile-web-app-status-bar" content="#695312">
-    <meta name="theme-color" content="#695312">
+    <meta name="apple-mobile-web-app-status-bar" content="#00B3AF">
+    <meta name="theme-color" content="#00B3AF">
     <title>Chatcha : connection</title>
 </head>
 

@@ -22,8 +22,8 @@ $db = new mysqli("mysql-tppwa.alwaysdata.net:3306", "tppwa", "988uiND/.p3nhOPD."
     <link rel="stylesheet" href="chatcha.css">
     <link rel="icon" href="images/icon192.png">
     <link rel="apple-touch-icon" href="/images/icon192.png">
-    <meta name="apple-mobile-web-app-status-bar" content="#695312">
-    <meta name="theme-color" content="#695312">
+    <meta name="apple-mobile-web-app-status-bar" content="#00B3AF">
+    <meta name="theme-color" content="#00B3AF">
     <script src="chatcha.js"></script>
     <script src="sw.js"></script>
     <title>Online</title>
