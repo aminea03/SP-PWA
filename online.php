@@ -57,7 +57,7 @@ $refreshOnlineStatus = $db->query("UPDATE users SET userStatus='0' WHERE userDat
             }
             foreach ($onlineList as $value) {
                 echo "<div><div class='online_line' onclick='show_details()'><img src='images/" . $value->userType . ".png'><p>$value->userLogin</p></div>";
-                echo "<div class='details'><p>Type : $value->userType</p><p>Meows : $value->userCount</p><p>Since : $value->userDate</p></div></div>";
+                echo "<div class='details'><p>Type : $value->userType</p><p>Meows : $value->userCount</p><p>Last : $value->userDate</p></div></div>";
             }
         }
         ?>
