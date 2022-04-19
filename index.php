@@ -60,7 +60,7 @@ if (isset($_POST["login_creation"]) && isset($_POST["password_creation"]) && iss
     <link rel="apple-touch-icon" href="/images/icon192.png">
     <meta name="apple-mobile-web-app-status-bar" content="#00B3AF">
     <meta name="theme-color" content="#00B3AF">
-    <title>Chatcha : connection</title>
+    <title>Chatcha : connexion</title>
 </head>
 
 <body>
@@ -69,7 +69,7 @@ if (isset($_POST["login_creation"]) && isset($_POST["password_creation"]) && iss
     </div>
     <section class="connexion">
         <div class="index_bottom">
-            <h2>CONNECTION</h2>
+            <h2>CONNEXION</h2>
             <div class="index_bottom_form_wrapper">
                 <div class="index_bottom_div1">
                     <label for="login">LOGIN</label>
