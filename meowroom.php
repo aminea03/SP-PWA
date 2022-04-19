@@ -41,10 +41,17 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
 
         }, 10000);
 
-        window.onbeforeunload = function(e) {
-            alert('Please press the Logout button to logout.');
-        };
 
+        // Disconnects on page leave
+        window.onbeforeunload = function() {
+            window.setTimeout(function() {
+                window.location = 'disconnect.php';
+            }, 1);
+            window.onbeforeunload = null;
+            return '';
+        }
+
+        // Sends message on Enter
         function sendOnEnter() {
             document.getElementById("chat_msg").addEventListener("keypress", function(e) {
                 if (e.key === "Enter") {

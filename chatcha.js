@@ -3,6 +3,7 @@ if (window.history.replaceState) {
 	window.history.replaceState(null, null, window.location.href);
 }
 
+// Registration style function
 document.addEventListener("click", function () {
 	$radios = document.querySelectorAll("input[type='radio']");
 	$radios.forEach((element) => {
@@ -14,12 +15,14 @@ document.addEventListener("click", function () {
 	});
 });
 
+// Show Registration page
 function register() {
 	document.querySelector(".connexion").classList.add("hide_connexion");
 	document.querySelector(".index_top img").style.height = "150px";
 	document.querySelector(".create_account").classList.add("show_create_account");
 }
 
+// Back to connection page
 function backToConnection() {
 	document.querySelector(".connexion").classList.remove("hide_connexion");
 	document.querySelector(".index_top img").style = "";
