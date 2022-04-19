@@ -12,7 +12,7 @@ $db = new mysqli("mysql-tppwa.alwaysdata.net:3306", "tppwa", "988uiND/.p3nhOPD."
 if (isset($_POST["message"]) && $_POST["message"] != "") {
     $sendQuery = $db->query("INSERT INTO messages VALUES (NULL,'" . $_SESSION["userId"] . "',NOW(),'" . $_POST["message"] . "')");
     $_SESSION["userCount"] = $_SESSION["userCount"] + 1;
-    $upgradeMeows = $db->query("UPDATE users SET userCount='" . $_SESSION["userCount"] . "' WHERE userId='" . $_SESSION["userId"] . "'");
+    $upgradeMeows = $db->query("UPDATE users SET userCount='" . $_SESSION["userCount"] . "', userDate=NOW(), userStatus='1' WHERE userId='" . $_SESSION["userId"] . "'");
 }
 
 ?>
@@ -40,16 +40,6 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
             document.getElementById("online").contentWindow.location.reload();
 
         }, 10000);
-
-
-        // Disconnects on page leave
-        window.onbeforeunload = function() {
-            window.setTimeout(function() {
-                window.location = 'disconnect.php';
-            }, 1);
-            window.onbeforeunload = null;
-            return '';
-        }
 
         // Sends message on Enter
         function sendOnEnter() {

@@ -17,7 +17,7 @@ if (isset($_POST["login"]) && isset($_POST["password"])) {
         if (password_verify($_POST["password"], $connection[0]->userPassword) == true) {
             $_SESSION["userId"] = $connection[0]->userId;
             $_SESSION["userCount"] = $connection[0]->userCount;
-            $db->query("UPDATE users SET userStatus='1' WHERE userId='" . $_SESSION["userId"] . "'");
+            $db->query("UPDATE users SET userStatus='1', userDate=NOW() WHERE userId='" . $_SESSION["userId"] . "'");
             header("location: meowroom.php");
         } else {
             echo '<script>alert("Unknown login or password")</script>';

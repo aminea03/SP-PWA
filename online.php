@@ -10,6 +10,9 @@ if (!isset($_SESSION["userId"])) {
 }
 $db = new mysqli("mysql-tppwa.alwaysdata.net:3306", "tppwa", "988uiND/.p3nhOPD.", "tppwa_chatcha");
 
+// Resets online user list (inactive users for more than 180 sec are shown offline)
+$refreshOnlineStatus = $db->query("UPDATE users SET userStatus='0' WHERE userDate < NOW() - INTERVAL 180 SECOND");
+
 ?>
 
 <!DOCTYPE html>
