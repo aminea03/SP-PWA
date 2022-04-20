@@ -27,7 +27,9 @@ $refreshOnlineStatus = $db->query("UPDATE users SET userStatus='0' WHERE userDat
     <link rel="apple-touch-icon" href="/images/icon192.png">
     <meta name="apple-mobile-web-app-status-bar" content="#00B3AF">
     <meta name="theme-color" content="#00B3AF">
-    <script src="chatcha.js"></script>
+    <meta http-equiv=”Pragma” content=”no-cache”>
+    <meta http-equiv=”Expires” content=”-1″>
+    <meta http-equiv=”CACHE-CONTROL” content=”NO-CACHE”>
     <script src="sw.js"></script>
     <title>Online</title>
     <script>

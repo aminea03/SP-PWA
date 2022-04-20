@@ -1,7 +1,7 @@
-const staticCache = "static_v2";
+const dynamicCache = "dynamic_v1";
+const staticCache = "static_v1";
 const assets = [
 	"/",
-	"/index.php",
 	"/reset.css",
 	"/chatcha.css",
 	"/images/logo_chatcha.png",
@@ -34,7 +34,7 @@ self.addEventListener("activate", (evt) => {
 	evt.waitUntil(
 		caches.keys().then((keys) => {
 			keys.forEach((key) => {
-				if (key != staticCache) {
+				if (key != staticCache && key != dynamicCache) {
 					caches.delete(key);
 				}
 			});
@@ -42,4 +42,24 @@ self.addEventListener("activate", (evt) => {
 	);
 });
 
-self.addEventListener("fetch", (evt) => {});
+self.addEventListener("fetch", (evt) => {
+	/* evt.respondWith(
+		caches.match(evt.request).then((cacheResponse) => {
+			if (!navigator.onLine) {
+				return cacheResponse;
+			} else {
+				return fetch(evt.request)
+					.then(function (response) {
+						let responseClone = response.clone();
+						caches.open(dynamicCache).then(function (cache) {
+							cache.put(evt.request, responseClone);
+						});
+						return cacheResponse;
+					})
+					.catch(function () {
+						return caches.match("/sw-test/gallery/myLittleVader.jpg");
+					});
+			}
+		})
+	); */
+});
