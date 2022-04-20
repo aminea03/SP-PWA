@@ -1,4 +1,4 @@
-const staticCache = "static_v1";
+const staticCache = "static_v2";
 const assets = [
 	"/",
 	"/index.php",

@@ -20,11 +20,11 @@ if (isset($_POST["login"]) && isset($_POST["password"])) {
             $db->query("UPDATE users SET userStatus='1', userDate=NOW() WHERE userId='" . $_SESSION["userId"] . "'");
             header("location: meowroom.php");
         } else {
-            echo '<script>alert("Unknown login or password")</script>';
+            echo '<script>var connectionAttempt=1; alert("Unknown login or password")</script>';
             session_destroy();
         }
     } else {
-        echo '<script>alert("Unknown login or password")</script>';
+        echo '<script>var connectionAttempt=1; alert("Unknown login or password")</script>';
         session_destroy();
     }
 }
@@ -60,6 +60,7 @@ if (isset($_POST["login_creation"]) && isset($_POST["password_creation"]) && iss
     <link rel="apple-touch-icon" href="/images/icon192.png">
     <meta name="apple-mobile-web-app-status-bar" content="#00B3AF">
     <meta name="theme-color" content="#00B3AF">
+
     <title>Chatcha : connection</title>
 </head>
 
@@ -104,8 +105,8 @@ if (isset($_POST["login_creation"]) && isset($_POST["password_creation"]) && iss
                         <label><input type="radio" name="type" value="Unicorncat">Unicorn Cat<img src="images/unicorncat.png" alt="unicorncat"></label>
                     </div>
                     <div class="cat_info">
-                        <label>LOGIN (max 20 char.)<input type="text" name="login_creation"></label>
-                        <label>PASSWORD<input type="password" name="password_creation"></label>
+                        <label>LOGIN (max 20 char.)<input type="text" name="login_creation" id="login_creation"></label>
+                        <label>PASSWORD<input type="password" name="password_creation" id="password_creation"></label>
                     </div>
                     <button type="submit"><img src="images/catfoot_button.png" alt="patte de chat"></button>
                 </form>
@@ -113,8 +114,45 @@ if (isset($_POST["login_creation"]) && isset($_POST["password_creation"]) && iss
             </div>
         </div>
     </section>
+    <!-- Loading animation -->
+    <div class="lds_wrapper">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <p>Connecting</p>
+    </div>
 
 
 </body>
+<script>
+    //Username and passord storage
+    if (window.localStorage) {
+        document.addEventListener("submit", function() {
+            window.localStorage.setItem("username", document.getElementById("login").value);
+            window.localStorage.setItem("password", document.getElementById("password").value);
+            document.querySelector(".lds_wrapper").style.display = "flex";
+            if (document.getElementById("login_creation").value != "" && document.getElementById("password_creation").value != "") {
+                window.localStorage.setItem("username", document.getElementById("login_creation").value);
+                window.localStorage.setItem("password", document.getElementById("password_creation").value);
+            }
+        })
+    }
+
+    //Auto login
+    if (localStorage.getItem("username") && localStorage.getItem("password")) {
+        document.getElementById("login").value = localStorage.getItem("username");
+        document.getElementById("password").value = localStorage.getItem("password");
+        // var connectionAttempt is defined only if connection has been aborted due to false login/password.
+        if (typeof connectionAttempt === "undefined") {
+            if (document.referrer != "https://tppwa.alwaysdata.net/meowroom.php" && document.referrer != "https://tppwa.alwaysdata.net/disconnect.php") {
+                document.querySelector(".lds_wrapper").style.display = "flex";
+                document.getElementById("login_form").submit();
+            }
+        }
+    }
+</script>
 
 </html>
