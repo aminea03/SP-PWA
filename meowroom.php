@@ -31,7 +31,6 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
     <meta name="apple-mobile-web-app-status-bar" content="#00B3AF">
     <meta name="theme-color" content="#00B3AF">
     <script src="chatcha.js"></script>
-    <script src="sw.js"></script>
     <script>
         setInterval(() => {
             document.getElementById("chatframe").contentWindow.location.reload();
@@ -45,6 +44,7 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
         function sendOnEnter() {
             document.getElementById("chat_msg").addEventListener("keypress", function(e) {
                 if (e.key === "Enter") {
+                    e.preventDefault();
                     document.getElementById("msg_form").submit();
                 };
             })
@@ -74,7 +74,7 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
                 </div>
                 <div class="typing_wrapper">
                     <form action="" method="POST" id="msg_form">
-                        <textarea id="chat_msg" name="message"></textarea>
+                        <textarea id="chat_msg" name="message" autofocus></textarea>
                     </form>
                     <button type="submit" form="msg_form"><img src="images/catfoot_button.png" alt="Submit button"></button>
                 </div>

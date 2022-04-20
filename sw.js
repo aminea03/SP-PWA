@@ -2,12 +2,21 @@ const dynamicCache = "dynamic_v1";
 const staticCache = "static_v1";
 const assets = [
 	"/",
+	"/offline.html",
 	"/reset.css",
 	"/chatcha.css",
 	"/images/logo_chatcha.png",
 	"/images/catfoot_button.png",
 	"/images/param.png",
-	"/images/disconnect.png",
+	"/images/boredcat.png",
+	"/images/businesscat.png",
+	"/images/extracleancat.png",
+	"/images/funnycat.png",
+	"/images/hackercat.png",
+	"/images/lazycat.png",
+	"/images/stealthcat.png",
+	"/images/supercat.png",
+	"/images/unicorncat.png",
 	"/fonts/AIR_Rebellion.eot",
 	"/fonts/AIR_Rebellion.svg",
 	"/fonts/AIR_Rebellion.ttf",
@@ -43,23 +52,17 @@ self.addEventListener("activate", (evt) => {
 });
 
 self.addEventListener("fetch", (evt) => {
-	/* evt.respondWith(
-		caches.match(evt.request).then((cacheResponse) => {
-			if (!navigator.onLine) {
-				return cacheResponse;
-			} else {
-				return fetch(evt.request)
-					.then(function (response) {
-						let responseClone = response.clone();
-						caches.open(dynamicCache).then(function (cache) {
-							cache.put(evt.request, responseClone);
-						});
-						return cacheResponse;
-					})
-					.catch(function () {
-						return caches.match("/sw-test/gallery/myLittleVader.jpg");
-					});
-			}
-		})
-	); */
+	if (!navigator.onLine) {
+		evt.respondWith(
+			caches.match(evt.request).then((cacheResponse) => {
+				return cacheResponse || caches.match("/offline.html");
+			})
+		);
+	} /* else {
+		evt.respondWith(
+			caches.match(evt.request).then((cacheResponse) => {
+				return console.log("ok") || false;
+			})
+		);
+	} */
 });

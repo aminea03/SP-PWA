@@ -30,7 +30,6 @@ $refreshOnlineStatus = $db->query("UPDATE users SET userStatus='0' WHERE userDat
     <meta http-equiv=”Pragma” content=”no-cache”>
     <meta http-equiv=”Expires” content=”-1″>
     <meta http-equiv=”CACHE-CONTROL” content=”NO-CACHE”>
-    <script src="sw.js"></script>
     <title>Online</title>
     <script>
         c = 0;

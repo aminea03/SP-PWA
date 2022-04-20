@@ -19,7 +19,6 @@ $db = new mysqli("mysql-tppwa.alwaysdata.net:3306", "tppwa", "988uiND/.p3nhOPD."
     <link rel="stylesheet" href="chatcha.css">
     <link rel="icon" href="images/icon192.png">
     <link rel="apple-touch-icon" href="/images/icon192.png">
-    <script src="sw.js"></script>
     <meta name="apple-mobile-web-app-status-bar" content="#00B3AF">
     <meta name="theme-color" content="#00B3AF">
     <meta http-equiv=”Pragma” content=”no-cache”>
