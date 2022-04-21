@@ -83,6 +83,48 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
     </main>
 
 </body>
+<script>
+    document.getElementById("msg_form").addEventListener("submit", function(e) {
+
+        if (!navigator.onLine) {
+            e.preventDefault();
+            if (window.localStorage) {
+                let msgStorage = [];
+                if (localStorage.getItem("msgStorage")) {
+                    let oldStorage = localStorage.getItem("msgStorage");
+                    msgStorage.push(oldStorage);
+                }
+                msgStorage.push(document.getElementById("chat_msg").value);
+                localStorage.setItem("msgStorage", msgStorage);
+                document.getElementById("chat_msg").value = "";
+                document.getElementById("chat_msg").focus();
+
+            }
+        }
+    })
+
+    window.addEventListener('online', (event) => {
+        let data = {
+            message: "barium"
+        };
+
+        fetch("/meowroom.php", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(res => {
+            console.log("Request complete! response:", res);
+        });
+        /*    if (localStorage.getItem("msgStorage")) {
+               localStorage.getItem("msgStorage").forEach(element => {
+
+
+               });
+           } */
+    });
+</script>
 
 
 </html>

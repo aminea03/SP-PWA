@@ -58,11 +58,18 @@ self.addEventListener("fetch", (evt) => {
 				return cacheResponse || caches.match("/offline.html");
 			})
 		);
-	} /* else {
+	} else {
 		evt.respondWith(
-			caches.match(evt.request).then((cacheResponse) => {
-				return console.log("ok") || false;
+			caches.open(dynamicCache).then(function (cache) {
+				return cache.match(evt.request).then(function (response) {
+					return fetch(evt.request).then((fetchResponse) => {
+						return caches.open(dynamicCache).then((cache) => {
+							cache.put(evt.request.url, fetchResponse.clone());
+							return fetchResponse;
+						});
+					});
+				});
 			})
 		);
-	} */
+	}
 });
