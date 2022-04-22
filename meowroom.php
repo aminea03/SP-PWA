@@ -39,22 +39,12 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
             document.getElementById("online").contentWindow.location.reload();
 
         }, 10000);
-
-        // Sends message on Enter
-        function sendOnEnter() {
-            document.getElementById("chat_msg").addEventListener("keypress", function(e) {
-                if (e.key === "Enter") {
-                    e.preventDefault();
-                    document.getElementById("msg_form").submit();
-                };
-            })
-        }
     </script>
 
     <title>Meowroom</title>
 </head>
 
-<body class="meowroom" onload="sendOnEnter()">
+<body class="meowroom">
     <header class="meow_header">
         <img class="logo" src="images/logo_chatcha.png" alt="logo chat">
         <div class="header_right">
@@ -65,20 +55,21 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
     <main>
         <div class="center_wrapper">
             <div class="online_wrapper">
+                <div class="offline_msg">
+                    <img src="images/offline.svg" alt="Wifi">
+                    <p>Network is offline.</p>
+                    <p>Your messages will be sent when back online.</p>
+                </div>
                 <iframe src="online.php" id="online"></iframe>
             </div>
             <div class="chat_wrapper">
                 <div class="chat">
-                    <div class="offline_msg">
-                        <p>You are currently offline.</p>
-                        <p>This message will be sent later.</p>
-                    </div>
                     <iframe src="chat.php#end" frameborder="0" id="chatframe">
                     </iframe>
                 </div>
                 <div class="typing_wrapper">
                     <form action="" method="POST" id="msg_form">
-                        <textarea id="chat_msg" name="message" autofocus></textarea>
+                        <input id="chat_msg" name="message" autofocus autocomplete="off"></input>
                     </form>
                     <button type="submit" form="msg_form"><img src="images/catfoot_button.png" alt="Submit button"></button>
                 </div>
@@ -89,7 +80,6 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
 </body>
 <script>
     document.getElementById("msg_form").addEventListener("submit", function(e) {
-
         if (!navigator.onLine) {
             e.preventDefault();
             if (window.localStorage) {
@@ -107,7 +97,14 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
         }
     })
 
+    window.addEventListener('offline', (event) => {
+        document.querySelector(".offline_msg").style.display = "flex";
+        document.getElementById("online").style.display = "none";
+    });
+
     window.addEventListener('online', (event) => {
+        document.querySelector(".offline_msg").style.display = "";
+        document.getElementById("online").style.display = "";
         if (localStorage.getItem("msgStorage")) {
             var msgArray = localStorage.getItem("msgStorage").split(",");
             msgArray.forEach(element => {
