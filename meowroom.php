@@ -79,6 +79,7 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
 
 </body>
 <script>
+    // If submit event, if offline then stores messages.
     document.getElementById("msg_form").addEventListener("submit", function(e) {
         if (!navigator.onLine) {
             e.preventDefault();
@@ -97,11 +98,14 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
         }
     })
 
+    // If offline, change css.
     window.addEventListener('offline', (event) => {
         document.querySelector(".offline_msg").style.display = "flex";
         document.getElementById("online").style.display = "none";
     });
 
+
+    // When back online, sends the stored messages.
     window.addEventListener('online', (event) => {
         document.querySelector(".offline_msg").style.display = "";
         document.getElementById("online").style.display = "";
