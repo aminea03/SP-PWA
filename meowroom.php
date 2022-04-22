@@ -69,6 +69,10 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
             </div>
             <div class="chat_wrapper">
                 <div class="chat">
+                    <div class="offline_msg">
+                        <p>You are currently offline.</p>
+                        <p>This message will be sent later.</p>
+                    </div>
                     <iframe src="chat.php#end" frameborder="0" id="chatframe">
                     </iframe>
                 </div>
@@ -104,26 +108,19 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
     })
 
     window.addEventListener('online', (event) => {
-        let data = {
-            message: "barium"
-        };
-
-        fetch("/meowroom.php", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        }).then(res => {
-            console.log("Request complete! response:", res);
-        });
-        /*    if (localStorage.getItem("msgStorage")) {
-               localStorage.getItem("msgStorage").forEach(element => {
-
-
-               });
-           } */
-    });
+        if (localStorage.getItem("msgStorage")) {
+            var msgArray = localStorage.getItem("msgStorage").split(",");
+            msgArray.forEach(element => {
+                let fd = new FormData();
+                fd.append("message", element);
+                fetch('/meowroom.php', {
+                    method: "POST",
+                    body: fd
+                })
+            })
+            localStorage.removeItem("msgStorage");
+        }
+    })
 </script>
 
 
