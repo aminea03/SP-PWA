@@ -32,12 +32,15 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
     <meta name="theme-color" content="#00B3AF">
     <script src="chatcha.js"></script>
     <script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+
         setInterval(() => {
             document.getElementById("chatframe").contentWindow.location.reload();
         }, 5000);
         setInterval(() => {
             document.getElementById("online").contentWindow.location.reload();
-
         }, 10000);
     </script>
 
@@ -49,7 +52,7 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
         <img class="logo" src="images/logo_chatcha.png" alt="logo chat">
         <div class="header_right">
             <img src="images/param.png" alt="Engrenage">
-            <a href="disconnect.php"><img src="images/disconnect.png" alt="Disconnect"></a>
+            <a id="disconnect" href="disconnect.php"><img src="images/disconnect.png" alt="Disconnect"></a>
         </div>
     </header>
     <main>
@@ -98,17 +101,26 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
         }
     })
 
-    // If offline, change css.
+    // If app launched offline, change "online section" css.
+    if (!navigator.onLine) {
+        document.querySelector(".offline_msg").style.display = "flex";
+        document.getElementById("online").style.display = "none";
+        document.getElementById("disconnect").style.display = "none";
+    }
+
+    // If app turns offline, change "online section" css.
     window.addEventListener('offline', (event) => {
         document.querySelector(".offline_msg").style.display = "flex";
         document.getElementById("online").style.display = "none";
+        document.getElementById("disconnect").style.display = "none";
     });
 
 
-    // When back online, sends the stored messages.
+    // When back online, sends the stored messages and restore original CSS.
     window.addEventListener('online', (event) => {
         document.querySelector(".offline_msg").style.display = "";
         document.getElementById("online").style.display = "";
+        document.getElementById("disconnect").style.display = "";
         if (localStorage.getItem("msgStorage")) {
             var msgArray = localStorage.getItem("msgStorage").split(",");
             msgArray.forEach(element => {
@@ -121,6 +133,9 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
             })
             localStorage.removeItem("msgStorage");
         }
+        // And refresh iframes
+        document.getElementById("chatframe").contentWindow.location.reload();
+        document.getElementById("online").contentWindow.location.reload();
     })
 </script>
 

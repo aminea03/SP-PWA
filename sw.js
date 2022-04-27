@@ -55,20 +55,41 @@ self.addEventListener("fetch", (evt) => {
 	if (!navigator.onLine) {
 		evt.respondWith(
 			caches.match(evt.request).then((cacheResponse) => {
-				return cacheResponse || caches.match("/offline.html");
+				if (evt.request.url.indexOf("index.php") > -1) {
+					return caches.match("/meowroom.php") || caches.match("/offline.html");
+				} else {
+					return cacheResponse || caches.match("/offline.html");
+				}
 			})
 		);
 	} else {
 		evt.respondWith(
-			caches.open(dynamicCache).then(function (cache) {
-				return cache.match(evt.request).then(function (response) {
-					return fetch(evt.request).then((fetchResponse) => {
-						return caches.open(dynamicCache).then((cache) => {
-							cache.put(evt.request.url, fetchResponse.clone());
-							return fetchResponse;
+			caches.match(evt.request).then((cacheResponse) => {
+				if (cacheResponse) {
+					// Online.php shall not be cached
+					if (evt.request.url.indexOf("online.php") > -1) {
+						return fetch(evt.request);
+					} // Chat.php shall be cached on every fetch to ensure last version availabily
+					else if (evt.request.url.indexOf("chat.php") > -1) {
+						return fetch(evt.request).then((newResponse) => {
+							caches.open(dynamicCache).then((cache) => cache.put(evt.request, newResponse));
+							return newResponse.clone();
 						});
-					});
-				});
+					} // All other pages should be cached
+					else {
+						return cacheResponse;
+					}
+				} else {
+					// Online.php shall never be called from cache
+					if (evt.request.url.indexOf("online.php") > -1) {
+						return fetch(evt.request);
+					} else {
+						return fetch(evt.request).then((newResponse) => {
+							caches.open(dynamicCache).then((cache) => cache.put(evt.request, newResponse));
+							return newResponse.clone();
+						});
+					}
+				}
 			})
 		);
 	}
