@@ -133,9 +133,6 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
             })
             localStorage.removeItem("msgStorage");
         }
-        // And refresh iframes
-        document.getElementById("chatframe").contentWindow.location.reload();
-        document.getElementById("online").contentWindow.location.reload();
     })
 </script>
 
