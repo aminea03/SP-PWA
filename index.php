@@ -51,6 +51,7 @@ if (isset($_POST["login_creation"]) && isset($_POST["password_creation"]) && iss
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page de connexion à la messagerie instantanée du site chatcha">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="chatcha.css">
     <link rel="manifest" href="manifest.json">
