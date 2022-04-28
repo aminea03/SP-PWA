@@ -29,6 +29,28 @@ function backToConnection() {
 	document.querySelector(".create_account").classList.remove("show_create_account");
 }
 
+// Emoticons list show
+var emoticonCount = 0;
+function showEmoticons() {
+	if (emoticonCount === 0) {
+		document.querySelector(".emoticon_list").style.display = "flex";
+		emoticonCount = 1;
+	} else {
+		document.querySelector(".emoticon_list").style.display = "none";
+		emoticonCount = 0;
+	}
+}
+
+// Type emoticon on click
+function typeEmoticon() {
+	let emoticon = event.target.textContent;
+	let msgContent = document.getElementById("chat_msg").value;
+	let newContent = msgContent + emoticon;
+	document.getElementById("chat_msg").value = newContent;
+	showEmoticons();
+	document.getElementById("chat_msg").focus();
+}
+
 // SW Register
 if ("serviceWorker" in navigator) {
 	navigator.serviceWorker.register("sw.js");

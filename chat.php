@@ -10,7 +10,7 @@ if (!isset($_SESSION["userId"])) {
 $db = new mysqli("mysql-tppwa.alwaysdata.net:3306", "tppwa", "988uiND/.p3nhOPD.", "tppwa_chatcha");
 ?>
 <!DOCTYPE html>
-<html lang="en" class="chat_background_color">
+<html lang="en" class="chat_background_color" translate="no">
 
 <head>
     <meta charset="UTF-8">

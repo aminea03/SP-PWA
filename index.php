@@ -45,7 +45,7 @@ if (isset($_POST["login_creation"]) && isset($_POST["password_creation"]) && iss
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
 
 <head>
     <meta charset="UTF-8">
