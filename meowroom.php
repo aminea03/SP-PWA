@@ -132,6 +132,23 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
             }
         } else {
             // If submit event, if Online 
+            if (window.Notification && window.Notification !== 'denied') { 
+            
+                Notification.requestPermission(perm => {
+                    if(perm === 'granted') {
+                        const notification = new Notification('New message',{
+                            body: 'You received a new message',
+                            icon: images/catfoot_button.png,
+                        });
+                        console.log('acces a la condition2');
+                    } else {
+                        console.log('désolée2!');
+                    }
+                })
+            } else {
+            console.log('désolée encore plus!2');
+            }
+
             console.log ('Ok pour submit online')
         }
     })
@@ -153,8 +170,9 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
 
         console.log('hello');
 
-        //if (window.Notification && window.Notification !== 'denied') { 
-            //Notification.requestPermission(perm => {
+        if (window.Notification && window.Notification !== 'denied') { 
+            
+            Notification.requestPermission(perm => {
                 if(perm === 'granted') {
                     const notification = new Notification('Deconnection',{
                         body: 'You are disconnected',
@@ -164,10 +182,10 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
                 } else {
                     console.log('désolée1!');
                 }
-           // })
-        //} else {
-           //console.log('désolée encore plus!1');
-       // }
+            })
+        } else {
+           console.log('désolée encore plus!1');
+        }
 
     });
 
