@@ -138,7 +138,7 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
                     if(perm === 'granted') {
                         const notification = new Notification('New message',{
                             body: 'You received a new message',
-                            icon: images/catfoot_button.png,
+                            icon: 'images/catfoot_button.png'
                         });
                         console.log('acces a la condition2');
                     } else {
@@ -176,7 +176,7 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
                 if(perm === 'granted') {
                     const notification = new Notification('Deconnection',{
                         body: 'You are disconnected',
-                        icon: images/catfoot_button.png,
+                        icon: 'images/catfoot_button.png'
                     });
                     console.log('acces a la condition1');
                 } else {
@@ -213,7 +213,7 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
                     if(perm === 'granted') {
                         const notification = new Notification('Waiting Messages',{
                             body: 'Your ' + msgArray.length + ' waiting messages have been published',
-                            icon: images/catfoot_button.png,
+                            icon: 'images/catfoot_button.png'
                         });
                         console.log('acces a la condition');
                     } else {
@@ -237,14 +237,9 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
     })
 
     //Notification
-<<<<<<< HEAD
     console.log(Notification.permission);
    if(Notification.permission === 'default'){
        requestNotification();
-=======
-    if (Notification.permission === 'default') {
-        requestNotification();
->>>>>>> cfc0f538d82402e90dad17b37c3190b5b9910b6e
     }
     if (Notification.permission === 'granted') {
         displayNotification();
