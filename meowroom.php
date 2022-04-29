@@ -214,6 +214,8 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
         };
         const notification = new Notification('My notif', param);
     }
+
+
 </script>
 
 
