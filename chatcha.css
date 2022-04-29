@@ -931,7 +931,7 @@
 		flex-flow: row wrap;
 		justify-content: space-between;
 		align-items: center;
-		width: 250px;
+		width: 260px;
 		background-color: rgba(0, 179, 176, 0.713);
 		padding: 15px;
 		border-radius: 15px;
@@ -943,7 +943,7 @@
 	.emoticon_list li {
 		padding: 4px;
 		flex-basis: 10%;
-		font-size: 32px;
+		font-size: 28px;
 		cursor: pointer;
 	}
 
