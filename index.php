@@ -153,8 +153,11 @@ if (isset($_POST["login_creation"]) && isset($_POST["password_creation"]) && iss
             }
         }
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> e2e9d25d657f2e9e7e9c6ce9cc17a07beffe837c
 </script>
 
 </html>
