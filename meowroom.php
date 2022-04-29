@@ -132,7 +132,24 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
             }
         } else {
             // If submit event, if Online 
-            console.log ('Ok pour submit online')
+            if (window.Notification && window.Notification !== 'denied') {
+
+                Notification.requestPermission(perm => {
+                    if (perm === 'granted') {
+                        const notification = new Notification('New message', {
+                            body: 'You received a new message',
+                            icon: 'images/catfoot_button.png'
+                        });
+                        console.log('acces a la condition2');
+                    } else {
+                        console.log('désolée2!');
+                    }
+                })
+            } else {
+                console.log('désolée encore plus!2');
+            }
+
+            console.log('Ok pour submit online')
         }
     })
 
@@ -153,21 +170,22 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
 
         console.log('hello');
 
-        //if (window.Notification && window.Notification !== 'denied') { 
-            //Notification.requestPermission(perm => {
-                if(perm === 'granted') {
-                    const notification = new Notification('Deconnection',{
+        if (window.Notification && window.Notification !== 'denied') {
+
+            Notification.requestPermission(perm => {
+                if (perm === 'granted') {
+                    const notification = new Notification('Deconnection', {
                         body: 'You are disconnected',
-                        icon: images/catfoot_button.png,
+                        icon: 'images/catfoot_button.png'
                     });
                     console.log('acces a la condition1');
                 } else {
                     console.log('désolée1!');
                 }
-           // })
-        //} else {
-           //console.log('désolée encore plus!1');
-       // }
+            })
+        } else {
+            console.log('désolée encore plus!1');
+        }
 
     });
 
@@ -192,10 +210,10 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
 
             if (window.Notification && window.Notification !== 'denied') {
                 Notification.requestPermission(perm => {
-                    if(perm === 'granted') {
-                        const notification = new Notification('Waiting Messages',{
+                    if (perm === 'granted') {
+                        const notification = new Notification('Waiting Messages', {
                             body: 'Your ' + msgArray.length + ' waiting messages have been published',
-                            icon: images/catfoot_button.png,
+                            icon: 'images/catfoot_button.png'
                         });
                         console.log('acces a la condition');
                     } else {
@@ -244,7 +262,10 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
         };
         const notification = new Notification('My notif', param);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e2e9d25d657f2e9e7e9c6ce9cc17a07beffe837c
 </script>
 
 
