@@ -159,11 +159,6 @@ function Connexion()
 {
      window.alert("Vous avez bien été connecté !");
 }
-
-function Deconnexion()
-{
-     window.alert("Vous avez bien été déconnecté !");
-}
 </script>
 
 </html>
