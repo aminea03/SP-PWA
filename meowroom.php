@@ -132,13 +132,13 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
             }
         } else {
             // If submit event, if Online 
-            if (window.Notification && window.Notification !== 'denied') { 
-            
+            if (window.Notification && window.Notification !== 'denied') {
+
                 Notification.requestPermission(perm => {
-                    if(perm === 'granted') {
-                        const notification = new Notification('New message',{
+                    if (perm === 'granted') {
+                        const notification = new Notification('New message', {
                             body: 'You received a new message',
-                            icon: images/catfoot_button.png,
+                            icon: images / catfoot_button.png,
                         });
                         console.log('acces a la condition2');
                     } else {
@@ -146,10 +146,10 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
                     }
                 })
             } else {
-            console.log('désolée encore plus!2');
+                console.log('désolée encore plus!2');
             }
 
-            console.log ('Ok pour submit online')
+            console.log('Ok pour submit online')
         }
     })
 
@@ -170,13 +170,13 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
 
         console.log('hello');
 
-        if (window.Notification && window.Notification !== 'denied') { 
-            
+        if (window.Notification && window.Notification !== 'denied') {
+
             Notification.requestPermission(perm => {
-                if(perm === 'granted') {
-                    const notification = new Notification('Deconnection',{
+                if (perm === 'granted') {
+                    const notification = new Notification('Deconnection', {
                         body: 'You are disconnected',
-                        icon: images/catfoot_button.png,
+                        icon: images / catfoot_button.png,
                     });
                     console.log('acces a la condition1');
                 } else {
@@ -184,7 +184,7 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
                 }
             })
         } else {
-           console.log('désolée encore plus!1');
+            console.log('désolée encore plus!1');
         }
 
     });
@@ -210,10 +210,10 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
 
             if (window.Notification && window.Notification !== 'denied') {
                 Notification.requestPermission(perm => {
-                    if(perm === 'granted') {
-                        const notification = new Notification('Waiting Messages',{
+                    if (perm === 'granted') {
+                        const notification = new Notification('Waiting Messages', {
                             body: 'Your ' + msgArray.length + ' waiting messages have been published',
-                            icon: images/catfoot_button.png,
+                            icon: 'images/catfoot_button.png',
                         });
                         console.log('acces a la condition');
                     } else {
@@ -237,14 +237,9 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
     })
 
     //Notification
-<<<<<<< HEAD
-    console.log(Notification.permission);
-   if(Notification.permission === 'default'){
-       requestNotification();
-=======
+
     if (Notification.permission === 'default') {
         requestNotification();
->>>>>>> cfc0f538d82402e90dad17b37c3190b5b9910b6e
     }
     if (Notification.permission === 'granted') {
         displayNotification();
@@ -267,12 +262,6 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
         };
         const notification = new Notification('My notif', param);
     }
-
-//Notification Déconnecté
-    function Deconnexion()
-{
-     window.alert("Vous avez bien été déconnecté !");
-}
 </script>
 
 
