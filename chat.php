@@ -57,7 +57,7 @@ $db = new mysqli("mysql-tppwa.alwaysdata.net:3306", "tppwa", "988uiND/.p3nhOPD."
                                 echo "<script>var audio = new Audio('images/ding.wav');</script>";
                                 echo "<script>audio.play();</script>";
                                 $currentUser = $_SESSION["login"];
-                                echo "<script> if (Notification.permission === 'granted') {text = 'Nouveau message de $value->userLogin'; sender='$value->userLogin'; if (sender != '$currentUser') {displayNotification();}}</script>";
+                                echo "<script> if (Notification.permission === 'granted') {text = 'New message from $value->userLogin'; sender='$value->userLogin'; if (sender != '$currentUser') {displayNotification();}}</script>";
                                 $_SESSION["lastMsg"] = $value->messageId;
                             }
                         }

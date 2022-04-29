@@ -158,26 +158,16 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
         document.getElementById("disconnect").style.display = "none";
 
         // Notification of "offline mode"
-
-        console.log('hello');
-
         if (window.Notification && window.Notification !== 'denied') {
-
             Notification.requestPermission(perm => {
                 if (perm === 'granted') {
-                    const notification = new Notification('Deconnection', {
-                        body: 'You are disconnected',
+                    const notification = new Notification('Disconnection', {
+                        body: 'You are offline',
                         icon: 'images/catfoot_button.png'
                     });
-                    console.log('acces a la condition1');
-                } else {
-                    console.log('désolée1!');
                 }
             })
-        } else {
-            console.log('désolée encore plus!1');
         }
-
     });
 
 
@@ -186,6 +176,18 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
         document.querySelector(".offline_msg").style.display = "";
         document.getElementById("online").style.display = "";
         document.getElementById("disconnect").style.display = "";
+
+        // Back online notification
+        if (window.Notification && window.Notification !== 'denied') {
+            Notification.requestPermission(perm => {
+                if (perm === 'granted') {
+                    const notification = new Notification('Online', {
+                        body: 'You are back online',
+                        icon: 'images/catfoot_button.png'
+                    });
+                }
+            })
+        }
         if (localStorage.getItem("msgStorage")) {
             var msgArray = localStorage.getItem("msgStorage").split(",");
             msgArray.forEach(element => {
@@ -203,28 +205,16 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
                 Notification.requestPermission(perm => {
                     if (perm === 'granted') {
                         const notification = new Notification('Waiting Messages', {
-                            body: 'Your ' + msgArray.length + ' waiting messages have been published',
+                            body: 'Your ' + msgArray.length + ' offline messages have been sent',
                             icon: 'images/catfoot_button.png'
                         });
-                        console.log('acces a la condition');
-                    } else {
-                        console.log('désolée!');
+
                     }
                 })
-            } else {
-                console.log('désolée encore plus!');
             }
-            /*console.log(msgArray.length);
-            console.log(notification);*/
-
-
-
             localStorage.removeItem("msgStorage");
         }
-
         window.location.reload();
-
-
     })
 
     //Notification
