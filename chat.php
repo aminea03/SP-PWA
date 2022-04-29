@@ -10,7 +10,7 @@ if (!isset($_SESSION["userId"])) {
 $db = new mysqli("mysql-tppwa.alwaysdata.net:3306", "tppwa", "988uiND/.p3nhOPD.", "tppwa_chatcha");
 ?>
 <!DOCTYPE html>
-<html lang="en" class="chat_background_color" translate="no">
+<html lang="en" class="chat_background_color">
 
 <head>
     <meta charset="UTF-8">
@@ -48,17 +48,15 @@ $db = new mysqli("mysql-tppwa.alwaysdata.net:3306", "tppwa", "988uiND/.p3nhOPD."
                             }
                         }
                         echo "<div id='end' class='chatpwrapper'><p class='chatp1'>$value->userLogin</p><p class='chatp2'>$value->messageDate : </p><p> $value->messageContent</p></div>";
+                    } else {
+                        echo "<div id='' class='chatpwrapper'><p class='chatp1'>$value->userLogin</p><p class='chatp2'>$value->messageDate : </p><p> $value->messageContent</p></div>";
                     }
-                } else {
-                    echo "<div id='' class='chatpwrapper'><p class='chatp1'>$value->userLogin</p><p class='chatp2'>$value->messageDate : </p><p> $value->messageContent</p></div>";
                 }
             }
         }
-
         ?>
     </div>
 </body>
-
 
 
 </html>
