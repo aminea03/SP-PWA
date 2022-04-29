@@ -257,10 +257,6 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
         };
         const notification = new Notification('My notif', param);
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> e2e9d25d657f2e9e7e9c6ce9cc17a07beffe837c
 </script>
 
 
