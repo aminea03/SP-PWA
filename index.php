@@ -153,12 +153,6 @@ if (isset($_POST["login_creation"]) && isset($_POST["password_creation"]) && iss
             }
         }
     }
-
-    // Notification connecté
-function Connexion()
-{
-     window.alert("Vous avez bien été connecté !");
-}
 </script>
 
 </html>
