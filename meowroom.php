@@ -132,6 +132,29 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
                     body: fd
                 })
             })
+
+            // Notification about the number of new messages until the last connection
+
+            if (window.Notification && window.Notification !== 'denied') { 
+                Notification.requestPermission(perm => {
+                    if(perm === 'granted') {
+                        const notification = new Notification('Messages en attente',{
+                            body: 'Vous avez reçu ' + msgArray.length + ' messages depuis votre dernière connection',
+                            icon: images/catfoot_button.png,
+                        });
+                        console.log('acces a la condition');
+                    } else {
+                        console.log('désolée!');
+                    }
+                })
+            }else {
+                console.log('désolée encore plus!');
+            }
+            /*console.log(msgArray.length);
+            console.log(notification);*/
+
+
+
             localStorage.removeItem("msgStorage");
         }
         document.getElementById("online").contentWindow.location.reload();
