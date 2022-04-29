@@ -110,6 +110,10 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
 
 </body>
 <script>
+    // If submit event, if Online 
+
+
+
     // If submit event, if offline then stores messages.
     document.getElementById("msg_form").addEventListener("submit", function(e) {
         if (!navigator.onLine) {
@@ -126,6 +130,9 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
                 document.getElementById("chat_msg").focus();
 
             }
+        } else {
+            // If submit event, if Online 
+            console.log ('Ok pour submit online')
         }
     })
 
@@ -136,15 +143,36 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
         document.getElementById("disconnect").style.display = "none";
     }
 
-    // If app turns offline, change "online section" css.
+    // If app turns offline, change "online section" css and notification.
     window.addEventListener('offline', (event) => {
         document.querySelector(".offline_msg").style.display = "flex";
         document.getElementById("online").style.display = "none";
         document.getElementById("disconnect").style.display = "none";
+
+        // Notification of "offline mode"
+
+        console.log('hello');
+
+        //if (window.Notification && window.Notification !== 'denied') { 
+            //Notification.requestPermission(perm => {
+                if(perm === 'granted') {
+                    const notification = new Notification('Deconnection',{
+                        body: 'You are disconnected',
+                        icon: images/catfoot_button.png,
+                    });
+                    console.log('acces a la condition1');
+                } else {
+                    console.log('désolée1!');
+                }
+           // })
+        //} else {
+           //console.log('désolée encore plus!1');
+       // }
+
     });
 
 
-    // When back online, sends the stored messages and restore original CSS.
+    // When back online, sends the stored messages and notification and restore original CSS.
     window.addEventListener('online', (event) => {
         document.querySelector(".offline_msg").style.display = "";
         document.getElementById("online").style.display = "";
@@ -162,11 +190,11 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
 
             // Notification about the number of new messages until the last connection
 
-            if (window.Notification && window.Notification !== 'denied') { 
+            if (window.Notification && window.Notification !== 'denied') {
                 Notification.requestPermission(perm => {
                     if(perm === 'granted') {
-                        const notification = new Notification('Messages en attente',{
-                            body: 'Vous avez reçu ' + msgArray.length + ' messages depuis votre dernière connection',
+                        const notification = new Notification('Waiting Messages',{
+                            body: 'Your ' + msgArray.length + ' waiting messages have been published',
                             icon: images/catfoot_button.png,
                         });
                         console.log('acces a la condition');
@@ -174,7 +202,7 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
                         console.log('désolée!');
                     }
                 })
-            }else {
+            } else {
                 console.log('désolée encore plus!');
             }
             /*console.log(msgArray.length);
@@ -184,29 +212,36 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
 
             localStorage.removeItem("msgStorage");
         }
+
         window.location.reload();
 
 
     })
 
     //Notification
+<<<<<<< HEAD
     console.log(Notification.permission);
    if(Notification.permission === 'default'){
        requestNotification();
+=======
+    if (Notification.permission === 'default') {
+        requestNotification();
+>>>>>>> cfc0f538d82402e90dad17b37c3190b5b9910b6e
     }
-    if(Notification.permission === 'granted'){
-       displayNotification();
+    if (Notification.permission === 'granted') {
+        displayNotification();
     }
-    if(Notification.permission === 'denied'){
-       console.log('Pas de notification pour le user');
+    if (Notification.permission === 'denied') {
+        console.log('Pas de notification pour le user');
     }
 
-    function requestNotification(){
-        Notification.requestPermission().then(permission=>{
+    function requestNotification() {
+        Notification.requestPermission().then(permission => {
             console.log(permission);
         })
     }
-    function displayNotification(){
+
+    function displayNotification() {
         let texte = "ma notification PWA";
         let param = {
             body: texte,
