@@ -215,6 +215,7 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
         const notification = new Notification('My notif', param);
     }
 
+//Notification Déconnecté
     function Deconnexion()
 {
      window.alert("Vous avez bien été déconnecté !");
