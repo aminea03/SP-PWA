@@ -190,6 +190,7 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
     })
 
     //Notification
+    console.log(Notification.permission);
    if(Notification.permission === 'default'){
        requestNotification();
     }
