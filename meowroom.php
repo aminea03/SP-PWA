@@ -189,6 +189,32 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
 
 
     })
+
+    //Notification
+    if (Notification.permission === 'default') {
+        requestNotification();
+    }
+    if (Notification.permission === 'granted') {
+        displayNotification();
+    }
+    if (Notification.permission === 'denied') {
+        console.log('Pas de notification pour le user');
+    }
+
+    function requestNotification() {
+        Notification.requestPermission().then(permission => {
+            console.log(permission);
+        })
+    }
+
+    function displayNotification() {
+        let texte = "ma notification PWA";
+        let param = {
+            body: texte,
+            icon: '🐱'
+        };
+        const notification = new Notification('My notif', param);
+    }
 </script>
 
 
