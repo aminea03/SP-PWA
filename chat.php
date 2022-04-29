@@ -24,6 +24,18 @@ $db = new mysqli("mysql-tppwa.alwaysdata.net:3306", "tppwa", "988uiND/.p3nhOPD."
     <meta http-equiv=”Pragma” content=”no-cache”>
     <meta http-equiv=”Expires” content=”-1″>
     <meta http-equiv=”CACHE-CONTROL” content=”NO-CACHE”>
+    <script>
+        var text = "";
+        var sender = "";
+
+        function displayNotification() {
+            let param = {
+                body: text,
+                icon: 'images/catfoot_button.png',
+            };
+            const notification = new Notification('Chatcha', param);
+        }
+    </script>
     <title>Chat</title>
 </head>
 
@@ -44,6 +56,8 @@ $db = new mysqli("mysql-tppwa.alwaysdata.net:3306", "tppwa", "988uiND/.p3nhOPD."
                             if (($value->messageId) > $_SESSION["lastMsg"]) {
                                 echo "<script>var audio = new Audio('images/ding.wav');</script>";
                                 echo "<script>audio.play();</script>";
+                                $currentUser = $_SESSION["login"];
+                                echo "<script> if (Notification.permission === 'granted') {text = 'Nouveau message de $value->userLogin'; sender='$value->userLogin'; if (sender != '$currentUser') {displayNotification();}}</script>";
                                 $_SESSION["lastMsg"] = $value->messageId;
                             }
                         }
@@ -57,6 +71,7 @@ $db = new mysqli("mysql-tppwa.alwaysdata.net:3306", "tppwa", "988uiND/.p3nhOPD."
         ?>
     </div>
 </body>
+
 
 
 </html>

@@ -136,11 +136,7 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
 
                 Notification.requestPermission(perm => {
                     if (perm === 'granted') {
-                        const notification = new Notification('New message', {
-                            body: 'You received a new message',
-                            icon: 'images/catfoot_button.png'
-                        });
-                        console.log('acces a la condition2');
+                        // Message notifications are now set on chat.php page
                     }
                 })
             }
@@ -237,24 +233,16 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
         requestNotification();
     }
     if (Notification.permission === 'granted') {
-        displayNotification();
+
     }
     if (Notification.permission === 'denied') {
-        console.log('Pas de notification pour le user');
+
     }
 
     function requestNotification() {
         Notification.requestPermission().then(permission => {
             console.log(permission);
         })
-    }
-
-    function displayNotification() {
-        let texte = "ma notification PWA";
-        let param = {
-            body: texte
-        };
-        const notification = new Notification('My notif', param);
     }
 </script>
 
