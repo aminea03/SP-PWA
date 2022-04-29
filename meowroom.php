@@ -190,7 +190,7 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
 
             // Notification about the number of new messages until the last connection
 
-            if (window.Notification && window.Notification !== 'denied') { 
+            if (window.Notification && window.Notification !== 'denied') {
                 Notification.requestPermission(perm => {
                     if(perm === 'granted') {
                         const notification = new Notification('Waiting Messages',{
@@ -202,7 +202,7 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
                         console.log('désolée!');
                     }
                 })
-            }else {
+            } else {
                 console.log('désolée encore plus!');
             }
             /*console.log(msgArray.length);
@@ -212,10 +212,37 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
 
             localStorage.removeItem("msgStorage");
         }
+
         window.location.reload();
 
 
     })
+
+    //Notification
+    if (Notification.permission === 'default') {
+        requestNotification();
+    }
+    if (Notification.permission === 'granted') {
+        displayNotification();
+    }
+    if (Notification.permission === 'denied') {
+        console.log('Pas de notification pour le user');
+    }
+
+    function requestNotification() {
+        Notification.requestPermission().then(permission => {
+            console.log(permission);
+        })
+    }
+
+    function displayNotification() {
+        let texte = "ma notification PWA";
+        let param = {
+            body: texte,
+            icon: '🐱'
+        };
+        const notification = new Notification('My notif', param);
+    }
 </script>
 
 
