@@ -108,7 +108,7 @@ if (isset($_POST["login_creation"]) && isset($_POST["password_creation"]) && iss
                         <label>LOGIN (max 20 char.)<input type="text" name="login_creation" id="login_creation"></label>
                         <label>PASSWORD<input type="password" name="password_creation" id="password_creation"></label>
                     </div>
-                    <button type="submit" value="Connexion" name="binfo" onClick="Connexion()"><img src="images/catfoot_button.png" alt="patte de chat"></button>
+                    <button type="submit"><img src="images/catfoot_button.png" alt="patte de chat"></button>
                 </form>
                 <p class="link_connection" onclick="backToConnection()">Back to connection</p>
             </div>
@@ -154,11 +154,7 @@ if (isset($_POST["login_creation"]) && isset($_POST["password_creation"]) && iss
         }
     }
 
-    // Notification connecté
-function Connexion()
-{
-     window.alert("Vous avez bien été connecté !");
-}
+
 </script>
 
 </html>
