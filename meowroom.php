@@ -53,7 +53,7 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
         <img class="logo" src="images/logo_chatcha.png" alt="logo chat">
         <div class="header_right">
             <img src="images/param.png" alt="Engrenage">
-            <a id="disconnect" href="disconnect.php" value="Déconnexion" name="binfo" onClick="Deconnexion()"><img src="images/disconnect.png" alt="Disconnect"></a>
+            <a id="disconnect" href="disconnect.php" ><img src="images/disconnect.png" alt="Disconnect"></a>
         </div>
     </header>
     <main>
@@ -257,6 +257,10 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
         };
         const notification = new Notification('My notif', param);
     }
+<<<<<<< HEAD
+
+=======
+>>>>>>> e2e9d25d657f2e9e7e9c6ce9cc17a07beffe837c
 </script>
 
 
