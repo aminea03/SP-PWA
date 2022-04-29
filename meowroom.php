@@ -53,7 +53,7 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
         <img class="logo" src="images/logo_chatcha.png" alt="logo chat">
         <div class="header_right">
             <img src="images/param.png" alt="Engrenage">
-            <a id="disconnect" href="disconnect.php" value="Déconnexion" name="binfo" onClick="Deconnexion()"><img src="images/disconnect.png" alt="Disconnect"></a>
+            <a id="disconnect" href="disconnect.php" ><img src="images/disconnect.png" alt="Disconnect"></a>
         </div>
     </header>
     <main>
@@ -219,14 +219,9 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
     })
 
     //Notification
-<<<<<<< HEAD
     console.log(Notification.permission);
    if(Notification.permission === 'default'){
        requestNotification();
-=======
-    if (Notification.permission === 'default') {
-        requestNotification();
->>>>>>> cfc0f538d82402e90dad17b37c3190b5b9910b6e
     }
     if (Notification.permission === 'granted') {
         displayNotification();
@@ -250,11 +245,6 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
         const notification = new Notification('My notif', param);
     }
 
-//Notification Déconnecté
-    function Deconnexion()
-{
-     window.alert("Vous avez bien été déconnecté !");
-}
 </script>
 
 
