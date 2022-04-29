@@ -82,7 +82,7 @@ if (isset($_POST["login_creation"]) && isset($_POST["password_creation"]) && iss
                         <input type="password" id="password" name="password" placeholder="Password">
                     </form>
                 </div>
-                <button type="submit" form="login_form" value="Connexion" name="binfo" onClick="Connexion()"><img src="images/catfoot_button.png" alt="patte de chat"></button>
+                <button type="submit" form="login_form" value="Connexion" name="binfo"><img src="images/catfoot_button.png" alt="patte de chat"></button>
             </div>
             <p class="index_link" onclick="register()">New ? Create a chatccount.</p>
         </div>
@@ -153,11 +153,6 @@ if (isset($_POST["login_creation"]) && isset($_POST["password_creation"]) && iss
             }
         }
     }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> e2e9d25d657f2e9e7e9c6ce9cc17a07beffe837c
 </script>
 
 </html>

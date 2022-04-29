@@ -53,7 +53,7 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
         <img class="logo" src="images/logo_chatcha.png" alt="logo chat">
         <div class="header_right">
             <img src="images/param.png" alt="Engrenage">
-            <a id="disconnect" href="disconnect.php" ><img src="images/disconnect.png" alt="Disconnect"></a>
+            <a id="disconnect" href="disconnect.php"><img src="images/disconnect.png" alt="Disconnect"></a>
         </div>
     </header>
     <main>
@@ -141,9 +141,9 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
                             icon: 'images/catfoot_button.png'
                         });
                         console.log('acces a la condition2');
-                    } 
+                    }
                 })
-            } 
+            }
 
         }
     })
@@ -233,8 +233,8 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
 
     //Notification
     console.log(Notification.permission);
-   if(Notification.permission === 'default'){
-       requestNotification();
+    if (Notification.permission === 'default') {
+        requestNotification();
     }
     if (Notification.permission === 'granted') {
         displayNotification();
@@ -252,8 +252,7 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
     function displayNotification() {
         let texte = "ma notification PWA";
         let param = {
-            body: texte,
-            icon: '🐱'
+            body: texte
         };
         const notification = new Notification('My notif', param);
     }
