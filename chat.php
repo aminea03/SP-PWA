@@ -42,8 +42,8 @@ $db = new mysqli("mysql-tppwa.alwaysdata.net:3306", "tppwa", "988uiND/.p3nhOPD."
                             $_SESSION["lastMsg"] = $value->messageId;
                         } else {
                             if (($value->messageId) > $_SESSION["lastMsg"]) {
-                                echo "<script>console.log('ok')</script>";
-                                echo "<script>var audio = new Audio('images/ding.wav');audio.play();</script>";
+                                echo "<script>var audio = new Audio('images/ding.wav');</script>";
+                                echo "<script>audio.play();</script>";
                                 $_SESSION["lastMsg"] = $value->messageId;
                             }
                         }
