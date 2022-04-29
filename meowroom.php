@@ -18,7 +18,7 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
 
 <head>
     <meta charset="UTF-8">
@@ -74,6 +74,33 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
                 <div class="typing_wrapper">
                     <form action="" method="POST" id="msg_form">
                         <input id="chat_msg" name="message" autofocus autocomplete="off"></input>
+                        <img class="emoticon_button" onclick="showEmoticons()" src="images/emoticon.svg" alt="Smiley">
+                        <ul class="emoticon_list">
+                            <li onclick="typeEmoticon()">😀</li>
+                            <li onclick="typeEmoticon()">😁</li>
+                            <li onclick="typeEmoticon()">😂</li>
+                            <li onclick="typeEmoticon()">😃</li>
+                            <li onclick="typeEmoticon()">😄</li>
+                            <li onclick="typeEmoticon()">😅</li>
+                            <li onclick="typeEmoticon()">😆</li>
+                            <li onclick="typeEmoticon()">😇</li>
+                            <li onclick="typeEmoticon()">😈</li>
+                            <li onclick="typeEmoticon()">😉</li>
+                            <li onclick="typeEmoticon()">😊</li>
+                            <li onclick="typeEmoticon()">😋</li>
+                            <li onclick="typeEmoticon()">😌</li>
+                            <li onclick="typeEmoticon()">😍</li>
+                            <li onclick="typeEmoticon()">😎</li>
+                            <li onclick="typeEmoticon()">😭</li>
+                            <li onclick="typeEmoticon()">😐</li>
+                            <li onclick="typeEmoticon()">😛</li>
+                            <li onclick="typeEmoticon()">😡</li>
+                            <li onclick="typeEmoticon()">😱</li>
+                            <li onclick="typeEmoticon()">😯</li>
+                            <li onclick="typeEmoticon()">🤐</li>
+                            <li onclick="typeEmoticon()">🤩</li>
+                            <li onclick="typeEmoticon()">🤭</li>
+                        </ul>
                     </form>
                     <button type="submit" form="msg_form"><img src="images/catfoot_button.png" alt="Submit button"></button>
                 </div>
@@ -157,8 +184,7 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
 
             localStorage.removeItem("msgStorage");
         }
-        document.getElementById("online").contentWindow.location.reload();
-        document.getElementById("chatframe").contentWindow.location.reload();
+        window.location.reload();
 
 
     })

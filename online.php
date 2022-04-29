@@ -16,7 +16,7 @@ $refreshOnlineStatus = $db->query("UPDATE users SET userStatus='0' WHERE userDat
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
 
 <head>
     <meta charset="UTF-8">
