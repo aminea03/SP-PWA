@@ -141,15 +141,10 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
                             icon: 'images/catfoot_button.png'
                         });
                         console.log('acces a la condition2');
-                    } else {
-                        console.log('désolée2!');
-                    }
+                    } 
                 })
-            } else {
-                console.log('désolée encore plus!2');
-            }
+            } 
 
-            console.log('Ok pour submit online')
         }
     })
 
