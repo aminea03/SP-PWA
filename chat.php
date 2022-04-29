@@ -39,15 +39,26 @@ $db = new mysqli("mysql-tppwa.alwaysdata.net:3306", "tppwa", "988uiND/.p3nhOPD."
                 if ($key > array_key_last($allMessages) - 30) {
                     if ($key === array_key_last($allMessages)) {
                         echo "<div id='end' class='chatpwrapper'><p class='chatp1'>$value->userLogin</p><p class='chatp2'>$value->messageDate : </p><p> $value->messageContent</p></div>";
-                    } else {
-                        echo "<div id='' class='chatpwrapper'><p class='chatp1'>$value->userLogin</p><p class='chatp2'>$value->messageDate : </p><p> $value->messageContent</p></div>";
+                        if (!isset($_SESSION["lastMsg"])) {
+                            $_SESSION["lastMsg"] = $value->messageId;
+                        } else {
+                            if (($value->messageId) > $_SESSION["lastMsg"]) {
+                                echo "<script>console.log('ok')</script>";
+                                echo "<script>var audio = new Audio('images/ding.wav');audio.play();</script>";
+                                $_SESSION["lastMsg"] = $value->messageId;
+                            }
+                        }
                     }
+                } else {
+                    echo "<div id='' class='chatpwrapper'><p class='chatp1'>$value->userLogin</p><p class='chatp2'>$value->messageDate : </p><p> $value->messageContent</p></div>";
                 }
             }
         }
+
         ?>
     </div>
 </body>
+
 
 
 </html>
