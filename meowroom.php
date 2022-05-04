@@ -10,7 +10,7 @@ if (!isset($_SESSION["userId"])) {
 $db = new mysqli("mysql-tppwa.alwaysdata.net:3306", "tppwa", "988uiND/.p3nhOPD.", "tppwa_chatcha");
 
 if (isset($_POST["message"]) && $_POST["message"] != "") {
-    $sendQuery = $db->query("INSERT INTO messages VALUES (NULL,'" . $_SESSION["userId"] . "',NOW(),'" . $_POST["message"] . "')");
+    $sendQuery = $db->query("INSERT INTO messages VALUES (NULL,'" . $_SESSION["userId"] . "',NOW(),'" . addslashes($_POST["message"]) . "')");
     $_SESSION["userCount"] = $_SESSION["userCount"] + 1;
     $upgradeMeows = $db->query("UPDATE users SET userCount='" . $_SESSION["userCount"] . "', userDate=NOW(), userStatus='1' WHERE userId='" . $_SESSION["userId"] . "'");
 }
@@ -124,7 +124,8 @@ if (isset($_POST["message"]) && $_POST["message"] != "") {
                     let oldStorage = localStorage.getItem("msgStorage");
                     msgStorage.push(oldStorage);
                 }
-                msgStorage.push(document.getElementById("chat_msg").value);
+
+                msgStorage.push(document.getElementById("chat_msg").value.replaceAll(",", " "));
                 localStorage.setItem("msgStorage", msgStorage);
                 document.getElementById("chat_msg").value = "";
                 document.getElementById("chat_msg").focus();
